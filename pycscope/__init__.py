@@ -117,7 +117,7 @@ def main(argv=None):
         if o == "-f":
             indexfn = a
         if o == "-i":
-            args.extend(list(map(string.rstrip, open(a, 'r').readlines())))
+            args.extend(map(string.rstrip, (sys.stdin if a == '-' and not os.path.exists('-') else open(a, 'r')).readlines()))
 
     # Search current dir by default
     if len(args) == 0:
